@@ -1,0 +1,19 @@
+[Unit]
+Description=The shoryuken service
+After=syslog.target network.target
+
+# See these pages for lots of options:
+# http://0pointer.de/public/systemd-man/systemd.service.html
+# http://0pointer.de/public/systemd-man/systemd.exec.html
+[Service]
+Type=simple
+WorkingDirectory=/opt/msri/apps/cloud_5_0/current/
+
+Environment='RAILS_ENV=production'
+ExecStart=bundle exec shoryuken --daemon --pidfile '/opt/msri/apps/cloud_5_0/shared/tmp/pids/shoryuken.pid' --logfile '/opt/msri/apps/cloud_5_0/shared/log/shoryuken.log' --config '/opt/msri/apps/cloud_5_0/current/config/shoryuken.yml' --rails
+ExecStop=kill $(cat /opt/msri/apps/cloud_5_0/shared/tmp/pids/shoryuken.pid) && rm -f /opt/msri/apps/cloud_5_0/shared/tmp/pids/shoryuken.pid
+User=msri
+Group=msri
+
+[Install]
+WantedBy=multi-user.target
