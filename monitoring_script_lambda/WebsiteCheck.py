@@ -6,8 +6,8 @@ import json
 
 def lambda_handler(event, context):
     client = boto3.client('lambda')
-    websiteurl='https://www.msri.org/web/cms' #enter your site url
-    metriname='StatsuCheck_NextGen' #enter metric name 
+    websiteurl='' #enter your site url
+    metriname='' #enter metric name 
     socketurl=websiteurl.split("/")[2]
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

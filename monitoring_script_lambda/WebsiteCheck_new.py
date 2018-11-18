@@ -4,7 +4,7 @@ import httplib2
 import socket
 
 #websiteurl='https://www.msri.org/web/cms' #enter your site url
-websiteurl='https://staging.msri.org/web/msri/about-msri' #enter your site url
+websiteurl='staging' #enter your site url
 socketurl=websiteurl.split("/")[2]
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
